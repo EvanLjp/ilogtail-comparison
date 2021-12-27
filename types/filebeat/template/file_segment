@@ -1,0 +1,9 @@
+
+- type: log
+  paths:
+    - /testlog/nginx-log-demo-${NUMBER}/*log
+  processors:
+    - drop_event:
+        when:
+          equals:
+            log.file.path: /testlog/nginx-log-demo-${NUMBER}/access.log

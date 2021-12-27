@@ -1,0 +1,75 @@
+"c${NUMBER}" :
+		{
+			"advanced" :
+			{
+				"k8s" :
+				{
+					"IncludeLabel" :
+					{
+						"io.kubernetes.container.name" : "nginx-log-demo-${NUMBER}"
+					}
+				}
+			},
+			"aliuid" : "ALIUID",
+			"category" : "file",
+			"create_time" : 1640059881,
+			"defaultEndpoint" : "cn-beijing-b-intranet.log.aliyuncs.com",
+			"delay_alarm_bytes" : 0,
+			"delay_skip_bytes" : 0,
+			"discard_none_utf8" : false,
+			"discard_unmatch" : true,
+			"docker_file" : true,
+			"enable" : true,
+			"enable_tag" : true,
+			"file_encoding" : "utf8",
+			"file_pattern" : "access.log",
+			"filter_keys" : [],
+			"filter_regs" : [],
+			"group_topic" : "",
+			"keys" :
+			[
+				"content"
+			],
+			"plugin" :
+			{
+				"processors" :
+				[
+					{
+						"type" : "processor_default"
+					}
+				],
+				"flushers":[
+					{
+						"type": "flusher_statistics",
+						"detail":{
+							"RateIntervalMs": 1000000
+						}
+					}
+				]
+			},
+			"local_storage" : true,
+			"log_begin_reg" : ".*",
+			"log_path" : "/var/log/medlinker",
+			"log_type" : "common_reg_log",
+			"log_tz" : "",
+			"max_depth" : 100,
+			"max_send_rate" : -1,
+			"merge_type" : "topic",
+			"preserve" : true,
+			"preserve_depth" : 0,
+			"priority" : 0,
+			"project_name" : "k8s-log-custom-test-project-helm",
+			"raw_log" : false,
+			"regex" :
+			[
+				"(.*)"
+			],
+			"region" : "cn-beijing-b",
+			"send_rate_expire" : 0,
+			"sensitive_keys" : [],
+			"tail_existed" : false,
+			"timeformat" : "",
+			"topic_format" : "none",
+			"tz_adjust" : false,
+			"version" : 3
+		}

@@ -1,0 +1,1 @@
+# The configuration of the different log fetchers.
