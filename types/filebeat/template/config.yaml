@@ -7,6 +7,23 @@ metadata:
     k8s-app: filebeat
 data:
   filebeat.yml: |-
+    filebeat.registry.flush: 30s
+    processors:
+      - add_kubernetes_metadata:
+          host: ${NODE_NAME}
+          matchers:
+          - logs_path:
+              logs_path: "/var/log/containers/"
+      - drop_event:
+          when:
+            equals:
+              input.type: container
     output.console:
       pretty: false
+    queue:
+      mem:
+        events: 10240
+        flush.min_events: 2048
+        flush.timeout: 1s
+    max_procs: 4
     filebeat.inputs:

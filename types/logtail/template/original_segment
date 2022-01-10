@@ -5,7 +5,7 @@
 				"force_multiconfig" : false,
 				"tail_size_kb" : 1024
 			},
-			"aliuid" : "ALIUID",
+			"aliuid" : "1654218965343050",
 			"category" : "file",
 			"create_time" : 1640326034,
 			"defaultEndpoint" : "cn-beijing-b-intranet.log.aliyuncs.com",
@@ -31,20 +31,7 @@
 			],
 			"plugin" :
 			{
-				"processors" :
-				[
-					{
-						"type" : "processor_default"
-					}
-				],
-				"flushers":[
-					{
-						"type": "flusher_statistics",
-						"detail":{
-							"RateIntervalMs": 1000000
-						}
-					}
-				]
+
 			},
 			"local_storage" : true,
 			"log_begin_reg" : ".*",

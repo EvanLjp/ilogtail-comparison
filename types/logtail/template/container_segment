@@ -1,54 +1,55 @@
-"config-${NUMBER}" :
-		{
-			"aliuid" : "ALIUID",
-			"category" : "container_stdout_logstore",
-			"create_time" : 1640153908,
-			"defaultEndpoint" : "cn-beijing-b-intranet.log.aliyuncs.com",
-			"delay_alarm_bytes" : 0,
-			"enable" : true,
-			"enable_tag" : true,
-			"filter_keys" : [],
-			"filter_regs" : [],
-			"group_topic" : "",
-			"local_storage" : true,
-			"log_type" : "plugin",
-			"log_tz" : "",
-			"max_send_rate" : -1,
-			"merge_type" : "topic",
-			"plugin" :
-			{
-				"inputs" :
-				[
-                    {
-                        "detail" :
+"##1.0##k8s-log-custom-test-project-helm$config-${NUMBER}" :
+                {
+                        "aliuid" : "1654218965343050",
+                        "category" : "container_stdout_logstore",
+                        "create_time" : 1640692891,
+                        "defaultEndpoint" : "cn-beijing-b-intranet.log.aliyuncs.com",
+                        "delay_alarm_bytes" : 0,
+                        "enable" : true,
+                        "enable_tag" : false,
+                        "filter_keys" : [],
+                        "filter_regs" : [],
+                        "group_topic" : "",
+                        "local_storage" : true,
+                        "log_type" : "plugin",
+                        "log_tz" : "",
+                        "max_send_rate" : -1,
+                        "merge_type" : "topic",
+                        "plugin" :
                         {
-                            "IncludeLabel" :
-                            {
-                                "io.kubernetes.container.name" : "nginx-log-demo-${NUMBER}"
-                            }
+                                "inputs" :
+                                [
+                                        {
+                                                "detail" :
+                                                {
+                                                        "ExcludeLabel" : {},
+														"IncludeLabel" :
+														{
+															"io.kubernetes.container.name" : "nginx-log-demo-${NUMBER}"
+														}
+                                                },
+                                                "type" : "service_docker_stdout"
+                                        }
+                                ],
+                                "processors":[
+                                        {
+                                                "type": "processor_filter_regex",
+                                                "detail" : {
+                                                        "Exclude":{
+                                                            "_namespace_":"default"
+                                                        }
+                                                }
+                                        }
+                                ]
+
                         },
-                        "type" : "service_docker_stdout"
-                    }
-                ],
-				"processors":
-				[
-					{
-						"type" : "processor_filter_regex",
-						"detail":
-						{
-							"Exclude":{
-								"_namespace_":"default"
-							}
-						}
-					}
-				]
-			},
-			"priority" : 0,
-			"project_name" : "k8s-log-custom-test-project-helm",
-			"raw_log" : false,
-			"region" : "cn-beijing-b",
-			"send_rate_expire" : 0,
-			"sensitive_keys" : [],
-			"tz_adjust" : false,
-			"version" : 2
-		}
+                        "priority" : 0,
+                        "project_name" : "k8s-log-custom-test-project-helm",
+                        "raw_log" : false,
+                        "region" : "cn-beijing-b",
+                        "send_rate_expire" : 0,
+                        "sensitive_keys" : [],
+                        "shard_hash_key" : [],
+                        "tz_adjust" : false,
+                        "version" : 1
+                }

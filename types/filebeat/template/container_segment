@@ -1,14 +1,5 @@
 
 - type: container
+  harvester_buffer_size: 524288
   paths:
-    - /var/log/containers/nginx-log-demo-${NUMBER}*.log
-  processors:
-    - add_kubernetes_metadata:
-        host: ${NODE_NAME}
-        matchers:
-        - logs_path:
-            logs_path: "/var/log/containers/"
-    - drop_event:
-        when:
-          equals:
-            beat: filebeat
+    - /var/log/containers/nginx-log-demo-${NUMBER}-*.log

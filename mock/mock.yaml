@@ -12,27 +12,22 @@ spec:
       containers:
         - name: ${NAME}
           image: registry.cn-hangzhou.aliyuncs.com/log-service/docker-log-test:latest
-          command: ["/bin/mock_log"]
-          args:  ["--log-type=nginx", "--stdout=true", "--stderr=true", "--path=/var/log/medlinker/access.log", "--total-count=1000000000", "--log-file-size=1000000000", "--log-file-count=2", "--logs-per-sec=200"]
-          env:
-            - name: "aliyun_logs_app1_tags"
-              value: "purpose=test"
-            - name: "aliyun_logs_nginx"
-              value: "/var/log/access.log*"
-          volumeMounts:
-            - name: path
-              mountPath: /var/log/medlinker
-              subPath: ${NAME}
+          command: [ "/bin/mock_log" ]
+          args: [ "--log-type=nginx", "--stdout=true" , "--path=/var/log/medlinker/access.log","--total-count=100000000000", "--log-file-size=1000000000", "--log-file-count=2", "--logs-per-sec=2778" ]
+          # volumeMounts:
+          #   - name: path
+          #     mountPath: /var/log/medlinker
+          #     subPath: ${NAME}
           resources:
             limits:
               memory: 200Mi
             requests:
               cpu: 10m
               memory: 10Mi
-      volumes:
-        - name: path
-          hostPath:
-            path: /testlog
-            type: DirectoryOrCreate
+      # volumes:
+      # - name: path
+      #   hostPath:
+      #     path: /testlog
+      #     type: DirectoryOrCreate
       nodeSelector:
-        kubernetes.io/hostname: cn-beijing.192.168.0.140
+        kubernetes.io/hostname: cn-beijing.192.168.0.17

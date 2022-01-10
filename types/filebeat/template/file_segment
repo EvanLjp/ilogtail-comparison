@@ -1,5 +1,6 @@
 
 - type: log
+  harvester_buffer_size: 524288
   paths:
     - /testlog/nginx-log-demo-${NUMBER}/*log
   processors:
